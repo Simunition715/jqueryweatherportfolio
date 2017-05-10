@@ -1,5 +1,6 @@
 #headerTitle {
 	font-family: 'Lobster', cursive;
+	font-size: 5em;
 	text-align: center;
 	margin:0px;
 }
@@ -12,14 +13,9 @@ body {
 	text-align: center;
 	margin-top: 0px;
 }
-/*#hr {
-	width: 100%;
-	height: 3px;
-	background-color: black;
-}*/
+
 #header {
 	width: 100%;
-	height: 150px;
 	background-color: white;
 	margin-top: 0px;
 	border-bottom: 3px solid black;
@@ -29,21 +25,19 @@ body {
 	line-height: 100px;
 }
 
-.pic {
-	width: 120px;
-	display: inline-block;
-	margin-right: 10px;
-}
-p.bio {
-	font-family: 'Quattrocento Sans', sans-serif;
-	font-size: 15px;
-	vertical-align: top;
-}
-#data {
-	display: inline-block;
-}
-.repos {
-	font-family: 'Quattrocento Sans', sans-serif;
-	font-size: 15px;
-	vertical-align: top;
+
+@media all and (min-width: 30em){
+	#api {
+		width: 50%;
+	}
+
+	body {
+		background-color: red;
+	}
+
+	#headerTitle {
+		font-family: 'Lobster', cursive;
+		text-align: center;
+		margin:0px;
+	}
 }
