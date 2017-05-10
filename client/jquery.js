@@ -5,7 +5,6 @@ if ("geolocation" in navigator) {
 }
 
 $('.js-geolocation').on('click', function() {
-	console.log("ok")
   navigator.geolocation.getCurrentPosition(function(position) {
     loadWeather(position.coords.latitude+','+position.coords.longitude); //load weather using your lat/lng coordinates
   });
@@ -13,34 +12,24 @@ $('.js-geolocation').on('click', function() {
 
 
 $(document).ready(function(){
-	$("#headerTitle").mouseenter(function(){
-		$("#headerTitle").css("color","red");
-	})	
+	
 	    $.getJSON("http://jsonip.com/?callback=?", function (data) {
-        $("#yourip").html(data.ip);
+        $("#github").html(data.ip);
     });
+		
+		$.get('https://api.github.com/users/simunition715', function(response){
+			var	information = '<img class="pic" src='+ response.avatar_url + '>';
+				information += '<div id="data"'
+				information += '<p class="bio">'+"Name: "+response.name+'</p>';
+				information += '<p class="bio">'+"Location: "+response.location+'</p>';
+				information += '<p class="bio">'+"Bio: "+response.bio+'</p>';
+				information += '<h2 class="repos">'+"Public Repos: "+response.public_repos+'</h2>';
+				information += '</div>'
+				$('#info').html(information)
+		} , 'json')
 })
 
 
-$(document).ready(function() {
-  loadWeather('New York',''); //@params location, woeid
-});
 
-function loadWeather(location, woeid) {
-  $.simpleWeather({
-    location: location,
-    woeid: woeid,
-    unit: 'f',
-    success: function(weather) {
-      html = '<h2><i class="icon-'+weather.code+'"></i> '+weather.temp+'&deg;'+weather.units.temp+'</h2>';
-      html += '<ul><li>'+weather.city+', '+weather.region+'</li>';
-      html += '<li class="currently">'+weather.currently+'</li>';
-      html += '<li>'+weather.alt.temp+'&deg;C</li></ul>';  
-      
-      $("#weather").html(html);
-    },
-    error: function(error) {
-      $("#weather").html('<p>'+error+'</p>');
-    }
-  });
-}
+
+
